@@ -44,7 +44,7 @@ public class UsuariosController {
 		if (sePudo) {
 			return "redirect:/listado";
 		} else {
-			// TODO: pregarcar los datos que lleno, salvo la contrasenia
+			// TODO: precargar los datos que lleno, salvo la contrasenia
 			return "login";
 		}
 	}
