@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+<title>Detalle Usuario</title>
+<link rel="stylesheet" type="text/css" href="/css/estilos.css"></link>
+<meta charset="UTF-8"></meta>
+</head>
+
+<body>
+	<div class="tarjeta-usuario">
+		<form th:action="'/modificar/' + ${id}">
+			<label>nombre:</label><input name="nombre" type="text" th:value="${nombre}"></input><br></br> 
+			<label>contrasenia:</label><input name="contrasenia" type="text" th:value="${contrasenia}"></input><br></br>
+			<label>activo:</label><input type="text" name="activo" th:value="${activo}"></input><br></br>
+			<input type="submit"></input>
+		</form>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Listado de Usuarios</title>
+		<link rel="stylesheet" type="text/css" href="/css/estilos.css"></link>
+		
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="/js/listado.js"></script>
+		<meta charset="UTF-8"></meta>
+	</head>
+
+	<body>
+		<form action="/procesarBusqueda">
+			<input type="text" name="palabraBuscada"></input>
+			<input type="submit" value="Buscar"></input>
+		</form>
+	
+		<label>Seleccionar todas:</label>
+		<input type="checkbox" id="seleccionarTodas"></input>
+		
+		<div class="tarjeta-usuario" th:each="usuario:${listadoUsuarios}">
+			<label>nombre: </label><a th:href="'/detalle/' + ${usuario.id}" th:text="${usuario.nombre}">to</a><br></br>
+			<label>contrasenia: </label><label th:text="${usuario.contrasenia}">1234</label><br></br>
+			<label>activo: </label><label th:text="${usuario.activo}">true</label><br></br>
+			<a th:href="'/eliminar/' + ${usuario.id}">X</a>
+		</div>
+	</body>
+
+</html>
