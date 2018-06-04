@@ -6,8 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
+import org.simplejavamail.email.Email;
+import org.simplejavamail.email.EmailBuilder;
+import org.simplejavamail.mailer.MailerBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
@@ -50,8 +54,7 @@ public class UsuariosController {
 	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) throws SQLException {
-		UsuariosHelper helper=new UsuariosHelper();
-		helper.cerrarSesion(session);
+		UsuariosHelper.cerrarSesion(session);
 		return "redirect:/login";
 	}
 	
@@ -234,6 +237,18 @@ public class UsuariosController {
 		} else {
 			System.out.println( " hola");
 		}
+
+		Email email = EmailBuilder.startingBlank()
+				.from("Fran APP", "francisco.j.laborda@gmail.com")
+				.to("Fran", "francisco.j.laborda@gmail.com")
+			    .withSubject("[Fran APP] Hola, se registro un usuario")
+			    .withPlainText("Esto es un texto de prueba")
+			    .buildEmail();
+
+			MailerBuilder
+			  .withSMTPServer("smtp.sendgrid.net", 587, "apikey", "LA_CLAVE_DE_SENDGRID_DESDE_VARIAABLE_DE_ENTORNO_RzO_vQFqnwNRkMKkHSXToc18")
+			  .buildMailer()
+			  .sendMail(email);
 		
 		connection.close();
 		return "redirect:/registro";
