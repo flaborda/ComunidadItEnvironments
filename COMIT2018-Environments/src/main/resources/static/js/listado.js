@@ -9,5 +9,19 @@ $(document).ready( function(){
 		console.log($(this).is(":checked"));
 	} );
 	
+	$('.boton-eliminar').click( function(){
+		
+		var id = $(this).data("id");
+		
+		$.ajax({
+			url: "/eliminar-ajax/" + id
+		}).done(function( respuesta ) {
+			var id = respuesta;			
+			$("label[data-id=" + id + "]").closest('div').remove();
+			$(loquesea).append( contenido );
+		});
+		
+		
+	} );
 	
 } );

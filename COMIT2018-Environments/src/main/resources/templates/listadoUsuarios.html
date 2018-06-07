@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/estilos.css"></link>
 		
 		
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
 		<script src="/js/listado.js"></script>
 		<meta charset="UTF-8"></meta>
 	</head>
@@ -23,7 +23,8 @@
 			<label>nombre: </label><a th:href="'/detalle/' + ${usuario.id}" th:text="${usuario.nombre}">to</a><br></br>
 			<label>contrasenia: </label><label th:text="${usuario.contrasenia}">1234</label><br></br>
 			<label>activo: </label><label th:text="${usuario.activo}">true</label><br></br>
-			<a th:href="'/eliminar/' + ${usuario.id}">X</a>
+			<a th:href="'/eliminar/' + ${usuario.id}">X Recarga</a>
+			<label class="boton-eliminar" th:attr="data-id=${usuario.id}">X Ajax</label>
 		</div>
 	</body>
 

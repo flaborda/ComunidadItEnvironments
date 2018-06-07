@@ -5,8 +5,8 @@ CREATE SEQUENCE public.usuarios_id_seq
     MAXVALUE 9223372036854775807
     CACHE 1;
 
-ALTER SEQUENCE public.usuarios_id_seq
-    OWNER TO postgres;
+--ALTER SEQUENCE public.usuarios_id_seq
+--    OWNER TO postgres;
 
 -- Table: public.usuarios
 
@@ -25,8 +25,8 @@ WITH (
 )
 TABLESPACE pg_default;
 
-ALTER TABLE public.usuarios
-    OWNER to postgres;
+--ALTER TABLE public.usuarios
+--    OWNER to postgres;
 
 
     

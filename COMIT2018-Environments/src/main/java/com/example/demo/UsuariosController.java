@@ -93,7 +93,25 @@ public class UsuariosController {
 		return "redirect:/listado";
 	}
 	
+	// ruta para eliminar por id
+	@GetMapping("/eliminar-ajax/{id}")
+	@ResponseBody
+	public String eliminarAjax(@PathVariable int id) throws SQLException {
+		
+		Connection connection;
+		connection = DriverManager.getConnection(env.getProperty("spring.datasource.url"),env.getProperty("spring.datasource.username"),env.getProperty("spring.datasource.password"));
+		
+		PreparedStatement consulta = connection.prepareStatement("DELETE FROM usuarios WHERE id = ?;");
+		consulta.setInt(1, id);
+		
+		consulta.executeUpdate();
+		
+		connection.close();
+		
+		return new Integer(id).toString();
+	}
 
+	
 	// muestra el listado completo de usuarios
 	@GetMapping("/listado")
 	public String listado(HttpSession session, Model template) throws SQLException {
